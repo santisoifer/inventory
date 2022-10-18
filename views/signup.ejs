@@ -15,17 +15,33 @@
     </head>
 <body>
 
+    <% if (userCreated === 1) { %>
+        <div class="alert alert-warning" role="alert">
+            No hay ningun usuario con esos datos. Por favor, reescribí los datos, o crea una cuenta, (más abajo)
+        </div>
+        <% } %>
+        
+        <% if (newUser === 0) { %>
+            <div class="alert alert-success" role="alert">
+                Usuario creado con éxito
+            </div>
+        <% } else if (newUser === 1) { %>
+            <div class="alert alert-warning" role="alert">
+                Ya existe una cuenta con ese nombre de usuario. Por favor, elija otro
+            </div>        
+        <% } %>
+
 <!-- Sign in form -->
 <div class="signin form-signup">
     <h1 class="title-h1">Sign in</h1>
     <form action="/signin" method="post">
         <div class="mb-3 form-parameter">
             <label for="first-name-signin" class="form-label">First name</label>
-            <input type="text" class="form-control" id="first-name-signin" placeholder="Santiago">
+            <input type="text" class="form-control" id="first-name-signin" placeholder="Santiago" name="username">
         </div>
         <div class="mb-3 form-parameter">
             <label for="password-signin" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password-signin" placeholder="12345">
+            <input type="password" class="form-control" id="password-signin" placeholder="12345" name="password">
         </div>
         <div class="gap-2 form-parameter submit-button-parent">
             <button class="btn btn-primary submit-button" type="submit">Sign in</button>
@@ -55,12 +71,12 @@
 
                 <div class="mb-3 form-parameter">
                     <label for="first-name-register" class="form-label">First name</label>
-                    <input type="text" class="form-control" id="first-name-register" placeholder="Pedro">
+                    <input type="text" class="form-control" id="first-name-register" placeholder="Pedro" name="username">
                 </div>
 
                 <div class="mb-3 form-parameter">
                     <label for="password-register" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password-register" placeholder="Your secure password">
+                    <input type="password" class="form-control" id="password-register" placeholder="Your secure password" name="password">
                 </div>
 
                 <div class="gap-2 form-parameter submit-button-parent">

@@ -1,0 +1,32 @@
+<%- include("partials/header.ejs") %>
+<link rel="stylesheet" href="css/addArticle.css">
+<div class="container-fluid">
+<h1>Añadir articulo</h1>
+<form action="/add-article" method="post">
+    <!-- Nombre del articulo -->
+        <div class="inputs">
+            <label for="article-name" class="form-label">Nombre del artículo</label>
+            <input type="text" class="form-control" id="article-name" placeholder="Maná de limón">
+        </div>
+    
+        <!-- Cantidad actual del articulo -->
+        <div class="inputs">
+            <label for="article-cuantity" class="form-label">Cantidad actual del artículo (número)</label>
+            <input type="number" class="form-control" id="article-cuantity" placeholder="1">
+        </div>
+    
+        <!-- cantidad deseada del articulo -->
+        <div class="inputs">
+            <label for="article-wished-cuantity" class="form-label">Cantidad deseada del artículo (número)</label>
+            <input type="number" class="form-control" id="article-wished-cuantity" placeholder="3">
+        </div>
+    
+        <div class="inputs">
+            <div class="d-grid submit-parent">
+                <button type="submit" class="btn btn-lg btn-primary">Añadir articulo</button>
+            </div>
+        </div>
+</div>
+</form>
+
+<%- include("partials/footer.ejs") %>

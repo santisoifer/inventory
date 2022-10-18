@@ -1,0 +1,18 @@
+body {
+    padding: 10px;
+}
+
+.inputs {
+    margin-bottom: 10px;
+    /* max-width: 1750px; */
+    margin: auto;
+}
+.inputs button {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.submit-parent {
+    /* max-width: 1024px; */
+    margin: auto;
+}

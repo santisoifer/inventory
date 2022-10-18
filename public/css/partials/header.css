@@ -1,3 +1,9 @@
 body {
     height: 100vh;
 }
+
+.button-toggler-parent{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}

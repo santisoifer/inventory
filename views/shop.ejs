@@ -1,26 +1,22 @@
 <%- include("partials/header.ejs") %>
-<link rel="stylesheet" href="css/home.css">
-
 
 <div class="table-responsive-xs container-fluid">
-    <h1>Inventario</h1>
+    <h1>Lista de compras</h1>
     <table class="table table-hover table-bordered">
         
         <thead class="table-header table-info">
             <td>Producto</td>
             <td>Stock</td>
-            <td>Stock querido</td>
-            <td>Hace falta comprar</td>
+            <td>Hace falta comprar?</td>
         </thead>
         
         <tbody class="table-body">
 
-            <% for( let i = 0; i < 33; i++ ) { %><%# TODO: cambiar el 3 por el n° de las tablas, proporcionada por el server (app.js) %>
+            <% for( let i = 0; i < 33; i++ ) { %><%# TODO: cambiar el 33 por el n° de lo que hay que comprar, proporcionada por el server (app.js) %>
                 <%# TODO: cambiar la info de las celdas, proporcionada por el server (app.js) %>
                 <tr>
                     <td>Mana</td>
                     <td>32</td>
-                    <td>0</td>
                     <td>No hay que comprar</td>
                 </tr>
 
@@ -29,11 +25,5 @@
     
     </table>
 </div>
-<a href="/add-article">
-    <button class="submit-button btn btn-primary"><i class="fa-solid fa-plus"></i></button>
-</a>
-<!-- <form action="/add-item" method="post">
-    <button type="submit" class="submit-button btn btn-primary"><i class="fa-solid fa-plus"></i></button>
-</form> -->
 
-<%- include("partials/footer.ejs") %> 
+<%- include("partials/footer.ejs") %>
