@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="css/signup.css">
+        <title>Inventory</title>
+    </head>
+<body>
+
+<!-- Sign in form -->
+<div class="signin form-signup">
+    <h1 class="title-h1">Sign in</h1>
+    <form action="/signin" method="post">
+        <div class="mb-3 form-parameter">
+            <label for="first-name-signin" class="form-label">First name</label>
+            <input type="text" class="form-control" id="first-name-signin" placeholder="Santiago">
+        </div>
+        <div class="mb-3 form-parameter">
+            <label for="password-signin" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password-signin" placeholder="12345">
+        </div>
+        <div class="gap-2 form-parameter submit-button-parent">
+            <button class="btn btn-primary submit-button" type="submit">Sign in</button>
+        </div>
+    </form>
+</div>
+
+<!-- Register modal + form -->
+<div class="register form-signup">
+    
+    <p class="text-p">Don't have an account?</p>
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Register for <b>free!</b></button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="register-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="register-title">Register!</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/register" method="post">
+
+                <div class="mb-3 form-parameter">
+                    <label for="first-name-register" class="form-label">First name</label>
+                    <input type="text" class="form-control" id="first-name-register" placeholder="Pedro">
+                </div>
+
+                <div class="mb-3 form-parameter">
+                    <label for="password-register" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password-register" placeholder="Your secure password">
+                </div>
+
+                <div class="gap-2 form-parameter submit-button-parent">
+                    <button class="btn btn-primary submit-button" type="submit">Register!</button>
+                </div>
+            
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,61 @@
+b {
+    color: rgb(132, 215, 7);
+}
+
+.title-h1 {
+    text-align: center;
+    display: inline;
+}
+
+.submit-button-parent{
+    width: 100%;
+}
+
+.submit-button{
+    width: 100%;
+}
+
+.signin {
+    text-align: center;
+}
+.text-p {
+    padding: 18px;
+}
+
+
+.form-parameter {
+    text-align: left;
+}
+
+.register {
+    margin: 10px;
+    text-align: center;
+}
+
+.register>p {
+    padding: 0;
+    margin: 7px;
+}
+
+.form-signup {
+    width: 92%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .submit-button-parent{
+        display: flex;
+        justify-content: center;
+    }
+
+    .submit-button{
+        width: 87%;
+    }
+}
