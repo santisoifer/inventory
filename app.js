@@ -16,6 +16,10 @@ app.get("/", function(req, res){
     res.render("signup.ejs")
 });
 
+app.get("/home", function(req, res){
+    res.render("home.ejs")
+});
+
 app.listen(3000, function(){
     console.log("Server listening on port 3000");
 });

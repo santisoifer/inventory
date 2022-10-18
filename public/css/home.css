@@ -1,0 +1,19 @@
+.submit-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    animation-name: button-floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes button-floating {
+    0%{transform: translateY(5px);}
+    25%{transform: translateY(-5px);}
+    50%{transform: translateY(5px);}
+    75%{transform: translateY(-5px);}
+    100%{transform: translateY(5px);}
+}

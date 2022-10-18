@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs") %>
+<link rel="stylesheet" href="css/home.css">
+
+<div class="table-responsive-xs">
+    <table class="table table-hover table-bordered">
+        
+        <thead class="table-header table-info">
+            <td>Producto</td>
+            <td>Stock</td>
+            <td>Stock querido</td>
+            <td>Hace falta comprar</td>
+        </thead>
+        
+        <tbody class="table-body">
+
+            <% for( let i = 0; i < 33; i++ ) { %><%# TODO: cambiar el 3 por el n° de las tablas, proporcionada por el server (app.js) %>
+                <%# TODO: cambiar la info de las celdas, proporcionada por el server (app.js) %>
+                <tr>
+                    <td>Mana</td>
+                    <td>32</td>
+                    <td>10</td>
+                    <td>-22</td>
+                </tr>
+
+                <% } %>
+        </tbody>  
+    
+    </table>
+</div>
+<form action="/add-item" method="post">
+    <button type="submit" class="submit-button btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+</form>
+
+<%- include("partials/footer.ejs") %> 
