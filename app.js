@@ -15,13 +15,13 @@ mongoose.connect("mongodb://localhost:27017/inventarioDB");
 
 const articleSchema = {
     name: String,
-    quantity: Number,
-    wantedQuantity: Number
+    actualQ: Number,
+    wihsedQ: Number
 }
 
 const userSchema = {
     name: String,
-    password: Number,
+    password: String,
     articles: [articleSchema]
 }
 
@@ -29,34 +29,40 @@ const Article = mongoose.model("Article", articleSchema);
 
 const User = mongoose.model("User", userSchema);
 
-// 0: creado con exito
-// 1: error
-// 2: defecto
-
 let newUserCreated;
+let currentSession;
 
 app.get("/", function(req, res){
-// Creado con exito
+    // Creado con exito
     if(newUserCreated === 0) {
         res.render("signup.ejs", {userCreated: 0, newUser: 0});
     } 
     // Error
     else if(newUserCreated === 1){
         res.render("signup.ejs", {userCreated: 0, newUser: 1});
+    } 
+    // No mostrar ningún mensaje
+    else {
+        res.render("signup.ejs", {userCreated: 0, newUser: 2});
     }
 });
 
 app.post("/signin", function(req, res){
-    const username = req.body.username;
-    const password = req.body.password;    
+    const username = _.toLower(req.body.username);
+    const password = _.toLower(req.body.password.toString());    
     
+    currentSession = undefined;
+    
+    // Buscar usuario, en base a los datos
     User.findOne({name: username, password:password}, function(err, userFounded){
         if (!err) {
             if (!userFounded) {
+                // Si no se econtro, mostrar mensaje de error
                 res.render("signup.ejs", {userCreated: 1, newUser: 2});
             } else{
+                // Si se econtro, redireccionar al inventario, y establecer la seción activa
                 res.redirect("/inventory");
-                let currentSession = userFounded;
+                currentSession = userFounded;
             }
             
         }else{
@@ -66,8 +72,8 @@ app.post("/signin", function(req, res){
 });
 
 app.post("/register", function(req, res){
-    const username = req.body.username;
-    const password = req.body.password;
+    const username = _.toLower(req.body.username);
+    const password = _.toLower(req.body.password.toString());
     
     // Chequear si no hay un usuario con el mismo nombre
     User.findOne({name: username}, function(err, userFounded){
@@ -85,7 +91,6 @@ app.post("/register", function(req, res){
             else {
                 res.redirect("/");
                 newUserCreated = 1;
-                // TODO: reenviar a iniciar sesión y mostrar modal que diga que existe un usuario con ese nombre
             }
 
 
@@ -94,16 +99,50 @@ app.post("/register", function(req, res){
 
 });
 
+app.post("/logout", function(req, res){
+    currentSession = undefined;
+    res.redirect("/");
+});
+
 app.get("/inventory", function(req, res){
-    res.render("home.ejs");
+    if(currentSession === undefined) {
+        res.redirect("/");
+    } else {
+        res.render("home.ejs", {articles: currentSession.articles, needToBuy: 0});
+    }
 });
 
 app.get("/shop-list", function(req, res){
-    res.render("shop.ejs");
+    if(currentSession === undefined) {
+        res.redirect("/");
+    } else {
+        res.render("shop.ejs");
+    }
 });
 
 app.get("/add-article", function(req, res){
-    res.render("addArticle.ejs");
+    if(currentSession === undefined) {
+        res.redirect("/");
+    } else {
+        res.render("addArticle.ejs");
+    }
+});
+
+app.post("/add-article", function(req, res){
+    const articleName = _.capitalize(req.body.articleName);
+    const articleQuantity = req.body.articleQuantity;
+    const articleWQ = req.body.articleWishedQuantity;
+
+    const newArticle = new Article({
+        name: articleName,
+        actualQ: articleQuantity,
+        wihsedQ: articleWQ
+    });
+
+    newArticle.save();
+    currentSession.articles.push(newArticle);
+    currentSession.save();
+    res.redirect("/inventory");
 });
 
 app.listen(3000, function(){

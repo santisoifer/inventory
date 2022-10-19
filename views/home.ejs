@@ -15,13 +15,13 @@
         
         <tbody class="table-body">
 
-            <% for( let i = 0; i < 33; i++ ) { %><%# TODO: cambiar el 3 por el n° de las tablas, proporcionada por el server (app.js) %>
+            <% for( let i = 0; i < articles.length; i++ ) { %><%# TODO: cambiar el 3 por el n° de las tablas, proporcionada por el server (app.js) %>
                 <%# TODO: cambiar la info de las celdas, proporcionada por el server (app.js) %>
                 <tr>
-                    <td>Mana</td>
-                    <td>32</td>
-                    <td>0</td>
-                    <td>No hay que comprar</td>
+                    <td><%= articles[i].name %></td>
+                    <td><%= articles[i].actualQ %></td>
+                    <td><%= articles[i].wihsedQ %></td>
+                    <td><%= articles[i].wihsedQ - articles[i].actualQ%></td>
                 </tr>
 
                 <% } %>
